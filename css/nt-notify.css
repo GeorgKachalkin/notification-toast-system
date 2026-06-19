@@ -1,0 +1,149 @@
+/* Контейнеры для уведомлений по углам */
+.notify-container {
+    position: fixed;
+    z-index: 1033;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    max-width: 90vw;
+}
+
+/* Само уведомление */
+.notify-item {
+    pointer-events: auto;
+    min-width: 380px;
+    max-width: 480px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    overflow: hidden;
+    opacity: 0;
+    border-left: 4px solid;
+}
+
+/* Цвета для разных типов */
+.notify-item.notify-success {
+    border-left-color: #28a745;
+}
+.notify-item.notify-danger {
+    border-left-color: #dc3545;
+}
+.notify-item.notify-warning {
+    border-left-color: #ffc107;
+}
+.notify-item.notify-info {
+    border-left-color: #17a2b8;
+}
+
+/* Контент уведомления */
+.notify-content {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 12px;
+}
+
+.notify-body {
+    display: flex;
+    flex: 1;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Иконка */
+.notify-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.notify-success .notify-icon { color: #28a745; }
+.notify-danger .notify-icon { color: #dc3545; }
+.notify-warning .notify-icon { color: #ffc107; }
+.notify-info .notify-icon { color: #17a2b8; }
+
+/* Текст */
+.notify-text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.notify-title {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.notify-message {
+    display: block;
+}
+
+/* Кнопка закрытия */
+.notify-close {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.2s;
+	align-items: center;
+}
+.notify-close:hover {
+    color: #333;
+}
+.notify-close svg {
+    display: block;
+}
+
+/* Прогресс-бар */
+.notify-progress {
+    height: 3px;
+    background: rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.notify-progress-bar {
+    width: 100%;
+    height: 100%;
+    transition: width linear;
+}
+.notify-success .notify-progress-bar { background: #28a745; }
+.notify-danger .notify-progress-bar { background: #dc3545; }
+.notify-warning .notify-progress-bar { background: #ffc107; }
+.notify-info .notify-progress-bar { background: #17a2b8; }
+
+/* Анимации */
+@keyframes notify-fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes notify-fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.notify-fade-in-down {
+    animation: notify-fade-in-down 0.3s ease forwards;
+}
+
+.notify-fade-out-up {
+    animation: notify-fade-out-up 0.3s ease forwards;
+}
